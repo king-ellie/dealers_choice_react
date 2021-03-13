@@ -19,8 +19,13 @@ const Item = db.define('item', {
 
 const syncAndSeed = async() => {
     try{
-        await db.authenticate()
         await db.sync( {force: true})
+        const [flour, sugar, coffee, salt] = await Promise.all([
+            Item.create({name: 'flour'}),
+            Item.create({name: 'sugar'}),
+            Item.create({name: 'coffee'}),
+            Item.create({name: 'salt'})
+        ])
     }
     catch(error){
         console.log('SYNCANDSEED ERROR:', error)
@@ -30,7 +35,5 @@ const syncAndSeed = async() => {
 
 module.exports = {
     syncAndSeed,
-    // models: {
-    //     Item
-    // }
+    Item
 }

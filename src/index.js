@@ -1,6 +1,5 @@
-const body = document.getElementById('body')
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Main from './Main'
 
-const testHeader = document.createElement('h2')
-testHeader.innerHTML = 'Testing whether index.js is communicating'
-
-body.appendChild(testHeader)
+ReactDOM.render(<Main />, document.getElementById('app'))
