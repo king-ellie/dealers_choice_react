@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("const body = document.getElementById('body')\n\nconst testHeader = document.createElement('h2')\ntestHeader.innerHTML = 'Testing whether index.js is communicating'\n\nbody.appendChild(testHeader)\n\n//# sourceURL=webpack://full-stack-demo/./src/index.js?");
+eval("const body = document.getElementById('body');\nconst testHeader = document.createElement('h2');\ntestHeader.innerHTML = 'Testing whether index.js is communicating';\nbody.appendChild(testHeader);\n\n//# sourceURL=webpack://full-stack-demo/./src/index.js?");
 
 /***/ })
 
