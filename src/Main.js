@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Item from './item'
 
 export default class Main extends React.Component {
   constructor() {
@@ -8,7 +9,7 @@ export default class Main extends React.Component {
         items: []
     }
     this.addItem = this.addItem.bind(this)
-    // this.deleteItem = this.deleteItem.bind(this)
+    this.deleteItem = this.deleteItem.bind(this)
   }
 
   async componentDidMount(){
@@ -46,10 +47,7 @@ export default class Main extends React.Component {
           <div id='item-list'>
               {this.state.items.map(item => {
                   return (
-                      <div key={item.id} >
-                        <li>{item.name}</li>
-                        <button onClick={()=> this.deleteItem(item.id)}>Delete</button>
-                      </div>
+                    <Item key={item.id} id={item.id} name={item.name} deleteItem={this.deleteItem}/>  
                   )})
               }
           </div>
