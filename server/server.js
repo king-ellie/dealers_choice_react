@@ -3,6 +3,7 @@ const { syncAndSeed, Item } = require('./db/db')
 const express = require('express')
 const app = express()
 
+app.use(express.urlencoded({extended: false}))
 
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
@@ -14,10 +15,11 @@ app.get('/api/items', async(req, res, next) => {
     res.send(await Item.findAll())
 })
 
-app.post('/api/items/1', async(req, res, next) => {
+
+app.post('/', async(req, res, next) => {
     try {
-        console.log('target hit')
-    //   Item.create({name: req.params.id})  
+        const newItem = await Item.create({name: req.body.item})
+        res.redirect('/')
     } catch (error) {
         console.log('NEW ITEM POST REQUEST ERROR:', error)
     }

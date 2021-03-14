@@ -17,19 +17,21 @@ export default class Main extends React.Component {
     })
   }
 
+
+  // HERE: working on grabbing input value and posting it/adding it to the db
   async addItem(event) {
     console.log('event.target:', event.target)
-    // await axios.post('/api/items/1')
+    console.log(await axios.post('/api/items/1'))
   }
 
   render() {
     return (
       <div>
           <h1>Pantry List</h1>
-          <div id='entry'>
-              <input></input>
+          <form method='POST' id='entry'>
+              <input name='item'></input>
               <button onClick={() => this.addItem(event)}>New Item</button>
-          </div>
+          </form>
           <div id='item-list'>
               {this.state.items.map(item => {
                   return (
