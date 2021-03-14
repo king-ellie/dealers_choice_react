@@ -25,6 +25,15 @@ app.post('/', async(req, res, next) => {
     }
 })
 
+app.delete('/:id', async(req, res, next) => {
+    try {
+        const toBeDestroyed = await Item.findByPk(req.params.id)
+        await toBeDestroyed.destroy()
+        res.send(console.log('Item has been deleted'))
+    } catch (error) {
+        console.log('DELETE HANDLER ERROR:', error)
+    }
+})
 
 
 const init = async() => {

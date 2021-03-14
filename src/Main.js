@@ -8,6 +8,7 @@ export default class Main extends React.Component {
         items: []
     }
     this.addItem = this.addItem.bind(this)
+    // this.deleteItem = this.deleteItem.bind(this)
   }
 
   async componentDidMount(){
@@ -17,11 +18,21 @@ export default class Main extends React.Component {
     })
   }
 
+  async addItem() {
+    await axios.post('/')
+  }
 
-  // HERE: working on grabbing input value and posting it/adding it to the db
-  async addItem(event) {
-    console.log('event.target:', event.target)
-    console.log(await axios.post('/api/items/1'))
+  async deleteItem(itemId){
+    try{
+      await axios.delete(`/${itemId}`)
+      const items = (await axios.get('/api/items')).data
+      this.setState({
+        items
+      })
+    }
+    catch(error){
+      console.log('DELETE REQUEST ERROR:', error)
+    }
   }
 
   render() {
@@ -30,12 +41,15 @@ export default class Main extends React.Component {
           <h1>Pantry List</h1>
           <form method='POST' id='entry'>
               <input name='item'></input>
-              <button onClick={() => this.addItem(event)}>New Item</button>
+              <button onClick={() => this.addItem()}>New Item</button>
           </form>
           <div id='item-list'>
               {this.state.items.map(item => {
                   return (
-                      <li key={item.id}>{item.name}</li>
+                      <div key={item.id} >
+                        <li>{item.name}</li>
+                        <button onClick={()=> this.deleteItem(item.id)}>Delete</button>
+                      </div>
                   )})
               }
           </div>

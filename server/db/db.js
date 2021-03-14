@@ -9,13 +9,8 @@ const Item = db.define('item', {
         validate: {
             notEmpty: true
         }
-    }, 
-    // quantity: {
-    //     type: DataTypes.INTEGER,
-    //     allowNull: false
-    // }
+    },
 })
-
 
 const syncAndSeed = async() => {
     try{
