@@ -45,11 +45,13 @@ export default class Main extends React.Component {
               <button onClick={() => this.addItem()}>New Item</button>
           </form>
           <div id='item-list'>
-              {this.state.items.map(item => {
-                  return (
-                    <Item key={item.id} id={item.id} name={item.name} deleteItem={this.deleteItem}/>  
-                  )})
-              }
+              <ul>
+                {this.state.items.map(item => {
+                    return (
+                      <Item key={item.id} id={item.id} name={item.name} deleteItem={this.deleteItem}/>  
+                    )})
+                }
+              </ul>
           </div>
       </div>
     );

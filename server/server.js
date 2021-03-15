@@ -6,6 +6,7 @@ const app = express()
 app.use(express.urlencoded({extended: false}))
 
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
+app.use('/client', express.static(path.join(__dirname, '../client')))
 
 app.get('/', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../client/index.html'))

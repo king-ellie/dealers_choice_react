@@ -1,0 +1,19 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    margin: 2rem
+}
+
+.item {
+    margin: 1rem 1rem 1rem 0rem;
+    display: flex
+}
+
+ul {
+    list-style-type: none;
+    padding: 0
+}
+
+li {
+    margin: .5rem
+}
