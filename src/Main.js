@@ -19,7 +19,12 @@ export default class Main extends React.Component {
     })
   }
 
+  //you should wrap this in a try catch
   async addItem() {
+    //you should update this route to send the new item that is being created
+    //capture the new item as the return value to the axios call
+    //const newItem = await (axios.post('/')).data
+    //and add the new item to the state
     await axios.post('/')
   }
 
@@ -48,7 +53,7 @@ export default class Main extends React.Component {
               <ul>
                 {this.state.items.map(item => {
                     return (
-                      <Item key={item.id} id={item.id} name={item.name} deleteItem={this.deleteItem}/>  
+                      <Item key={item.id} id={item.id} name={item.name} deleteItem={this.deleteItem}/>
                     )})
                 }
               </ul>

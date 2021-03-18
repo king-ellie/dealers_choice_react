@@ -16,16 +16,26 @@ app.get('/api/items', async(req, res, next) => {
     res.send(await Item.findAll())
 })
 
-
+/* your post and delete routes
+should use the same path that you use to get data
+so this should be app.post('/api/items')
+check out RESTful api principles here:
+https://restfulapi.net/resource-naming/
+*/
 app.post('/', async(req, res, next) => {
     try {
-        const newItem = await Item.create({name: req.body.item})
+        const newItem = await Item.create({ name: req.body.item })
+        //your data routes should be completely separate from the webpage
+        //so you should post to the database
+        //send the newItem back to the front end
+        //and continue handling the item on the frontend from there
         res.redirect('/')
     } catch (error) {
         console.log('NEW ITEM POST REQUEST ERROR:', error)
     }
 })
 
+//this should be app.delete('/api/items/:id')
 app.delete('/:id', async(req, res, next) => {
     try {
         const toBeDestroyed = await Item.findByPk(req.params.id)
@@ -40,7 +50,7 @@ app.delete('/:id', async(req, res, next) => {
 const init = async() => {
     try {
         await syncAndSeed()
-        
+
         const port = process.env.PORT || 3000
         app.listen(port, () => console.log(`app is listening on ${port}`))
     }
